@@ -15,11 +15,15 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::group(['middleware'=>['admin'], 'prefix'=>'admin'], function () {
-    Route::resource('agencies', 'AgencyController');
-    Route::resource('tours', 'TourController');
-    Route::resource('users', 'UserController');
-    Route::get('agency/tours/{agency}', 'AgencyController@allTours')->name('agency.tours');
+Route::group(['prefix'=>'admin'], function () {
+    Route::resource('agencies', 'AgencyController')->middleware('admin');
+    Route::resource('tours', 'TourController')->middleware('admin', 'agent');
+    Route::resource('users', 'UserController')->middleware('admin');
+    Route::get('agency/tours/{agency}', 'AgencyController@allTours')->name('agency.tours')->middleware('admin');
+});
+
+Route::group(['prefix'=>'agent'], function (){
+   Route::get('tours', 'AgencyController@agentTours')->name('agent.tours');
 });
 
 

@@ -25,7 +25,7 @@ class TourStoreRequest extends FormRequest
     {
         return [
             'name'          => 'required|max:255',
-            'agency_id'     => 'required',
+            'agency_id'     => 'nullable',
             'country'       => 'required',
             'price'         => 'required|integer',
             'room_capacity' => 'nullable|integer|max:6'

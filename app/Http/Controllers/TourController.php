@@ -6,6 +6,7 @@ use App\Agency;
 use App\Http\Requests\TourStoreRequest;
 use App\Tour;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class TourController extends Controller
 {
@@ -46,6 +47,10 @@ class TourController extends Controller
     {
         $mealServises = ['OB', 'BB', 'HB', 'FB', 'AI'];
         $agencies = Agency::all();
+        $user = Auth::user();
+        if($user->is_agent) {
+            return view('agent.tours.edit', compact('tour', 'mealServises', 'agencies'));
+        }
         return view('admin.tours.edit', compact('tour', 'mealServises', 'agencies'));
     }
 
@@ -54,6 +59,11 @@ class TourController extends Controller
     {
         $tour->fill($request->all());
         $tour->save();
+
+        $user = Auth::user();
+        if($user->is_agent) {
+            return redirect()->route('agent.tours');
+        }
 
         return redirect()->route('tours.index')->with('success', 'Тур успешно обновлен');
     }

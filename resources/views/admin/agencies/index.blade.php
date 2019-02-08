@@ -32,8 +32,6 @@
                                 @forelse($agency->users as $user)
                                     @if($user->is_agent)
                                         <li style="list-style-type: none"><a href="{{ route('users.show', $user->id) }}">{{ $user->name }} </a></li>
-                                    @else
-                                        Не назначен
                                     @endif
                                     @empty
                                     Не назначен

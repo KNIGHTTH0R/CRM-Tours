@@ -4,7 +4,10 @@ namespace App\Http\Controllers;
 
 use App\Agency;
 use App\Tour;
+use App\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
+
 
 class AgencyController extends Controller
 {
@@ -41,6 +44,7 @@ class AgencyController extends Controller
 
     public function show(Agency $agency)
     {
+
         return view('admin.agencies.show', ['agency'=>$agency]);
     }
 
@@ -75,5 +79,15 @@ class AgencyController extends Controller
     {
         $tours = Tour::where('agency_id', $agency->id)->get();
         return view('admin.agencies.tours', compact('tours', 'agency'));
+    }
+
+    public function agentTours()
+    {
+        $user = Auth::user();
+        $userAgencyId = $user->agency_id;
+        $agency = Agency::where('id', $userAgencyId)->first();
+        $tours = Tour::where('agency_id', $userAgencyId)->get();
+
+        return view('agent.tours.index', compact('tours', 'user', 'agency'));
     }
 }

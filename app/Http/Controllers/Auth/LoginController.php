@@ -28,12 +28,16 @@ class LoginController extends Controller
 
     public function authenticated()
     {
-        if(Auth::check() && Auth::user()->status('admin'))
+        if(Auth::check() && Auth::user()->is_admin)
         {
-            return redirect('/admin/agencies');
+            return redirect()->route('agencies.index');
+        }
+        if(Auth::check() && Auth::user()->is_agent)
+        {
+            return redirect()->route('agent.tours');
         }
 
-        return redirect('/home');
+        return redirect()->route('home');
     }
 
     public function __construct()
