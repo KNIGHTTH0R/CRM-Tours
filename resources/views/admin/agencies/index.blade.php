@@ -1,7 +1,6 @@
 @extends('layouts.layout')
 
 @section('content')
-
     <div id="wrapper">
         @component('layouts.components.success')
             @endcomponent
@@ -31,7 +30,8 @@
                             <td>
                                 @forelse($agency->users as $user)
                                     @if($user->is_agent)
-                                        <li style="list-style-type: none"><a href="{{ route('users.show', $user->id) }}">{{ $user->name }} </a></li>
+                                        <li style="list-style-type: none">
+                                            <a href="{{ route('users.show', $user->id) }}">{{ $user->name }} </a></li>
                                     @endif
                                     @empty
                                     Не назначен

@@ -46,6 +46,15 @@
                             <label class="form-check-label" for="is_agent">
                                 {{ __('Агент') }}
                             </label>
+
+                            <div class="form-check">
+                                <input class="form-check-input" type="checkbox" name="is_agent" value="0">
+
+                                <label class="form-check-label" for="is_admin">
+                                    {{ __('удалить из агентов') }}
+                                </label>
+                            </div>
+
                         </div>
                         <div class="form-check">
                             <input class="form-check-input" type="checkbox" name="is_admin" value="1">
@@ -53,7 +62,17 @@
                             <label class="form-check-label" for="is_admin">
                                 {{ __('Администратор') }}
                             </label>
+
+                            <div class="form-check">
+                                <input class="form-check-input" type="checkbox" name="is_admin" value="0">
+
+                                <label class="form-check-label" for="is_admin">
+                                    {{ __('удалить из администраторов') }}
+                                </label>
+                            </div>
+
                         </div>
+
 
                         <br><br/>
                         <button  class="btn btn-primary" type="submit">Изменить</button>

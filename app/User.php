@@ -43,7 +43,7 @@ class User extends Authenticatable
 
     public function tours()
     {
-        return $this->belongsToMany('App\Tour', 'tours_users');
+        return $this->belongsToMany('App\Tour', 'tours_users')->withPivot('status');
     }
 
     public function status()

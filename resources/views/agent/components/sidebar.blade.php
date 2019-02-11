@@ -1,12 +1,12 @@
 <div class="col-sm-2">
     <nav class="navbar nav-sidebar">
-        <table class="table">
-            <th class="h5">Меню</th>
+        <table class="table table-hover">
+            <th class="h5 text-dark">Меню</th>
             <tr>
-                <td><a href="{{ route('agent.tours') }}" class="nav navbar-light">Все туры</a> </td>
+                <td><a href="{{ route('agent.tours') }}" class="text-dark">Все туры</a> </td>
             </tr>
             <tr>
-                <td><a href="{{ route('agent.tours') }}" class="nav navbar-light">Клиенты</a> </td>
+                <td><a href="{{ route('agent.users') }}" class="text-dark">Клиенты</a> </td>
             </tr>
             <tr>
                 <td> </td>

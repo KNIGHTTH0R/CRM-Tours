@@ -11,6 +11,7 @@
                 @component('agent.components.sidebar')
                 @endcomponent
                 <div class="col-md-10">
+
                     <table class="table">
                         <thead class="text-info">
                         <tr>
@@ -37,12 +38,6 @@
                                 <td>{{ $tour->price }} грн</td>
                                 <td>
                                     <a href="{{route('tours.edit', $tour->id)}}" class="alert-link">Редактировать</a>
-
-                                    <form action="{{ route('tours.destroy', $tour->id) }}" method="POST">
-                                        @csrf
-                                        @method('DELETE')
-                                        <button  class="btn btn-outline-dark" type="submit" onclick="return confirm('Вы уверены?')">Удалить</button>
-                                    </form>
 
                                 </td>
                             </tr>

@@ -16,7 +16,11 @@ class TourController extends Controller
 
         $tours = Tour::paginate(5);
 
-        return view('admin.tours.index', compact('tours'));
+        if(Auth::user()->is_admin){
+            return view('admin.tours.index', compact('tours'));
+        } else {
+            return redirect()->route('home');
+        }
     }
 
 

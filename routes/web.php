@@ -17,13 +17,16 @@ Route::get('/', function () {
 
 Route::group(['prefix'=>'admin'], function () {
     Route::resource('agencies', 'AgencyController')->middleware('admin');
-    Route::resource('tours', 'TourController')->middleware('admin', 'agent');
-    Route::resource('users', 'UserController')->middleware('admin');
+    Route::resource('tours', 'TourController')->middleware('admin' OR 'agent');
+    Route::resource('users', 'UserController')->middleware('admin' OR 'agent');
     Route::get('agency/tours/{agency}', 'AgencyController@allTours')->name('agency.tours')->middleware('admin');
 });
 
-Route::group(['prefix'=>'agent'], function (){
+Route::group(['middleware'=>['agent'], 'prefix'=>'agent'], function (){
    Route::get('tours', 'AgencyController@agentTours')->name('agent.tours');
+   Route::get('users', 'UserController@agencyUsers')->name('agent.users');
+   Route::match(['put', 'patch'], 'users/{user}', 'UserController@tourDelete')->name('agent.tours.delete');
+   Route::match(['get', 'post'], 'users/{user}', 'UserController@tourStatus')->name('agent.tours.status');
 });
 
 

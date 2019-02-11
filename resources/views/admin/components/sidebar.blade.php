@@ -1,15 +1,15 @@
 <div class="col-sm-2">
     <nav class="navbar nav-sidebar">
-        <table class="table">
+        <table class="table table-hover">
             <th class="h5">Меню</th>
             <tr>
-                <td><a href="{{ route('agencies.index') }}" class="nav navbar-light">Агентства</a> </td>
+                <td><a href="{{ route('agencies.index') }}" class="text-dark">Агентства</a> </td>
             </tr>
             <tr>
-                <td><a href="{{ route('tours.index') }}" class="nav navbar-light">Туры</a> </td>
+                <td><a href="{{ route('tours.index') }}" class="text-dark">Туры</a> </td>
             </tr>
             <tr>
-                <td><a href="{{ route('users.index') }}" class="nav navbar-light">Пользователи</a> </td>
+                <td><a href="{{ route('users.index') }}" class="text-dark">Пользователи</a> </td>
             </tr>
             <tr>
                 <td> </td>

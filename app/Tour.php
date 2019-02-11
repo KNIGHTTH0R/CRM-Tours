@@ -20,6 +20,6 @@ class Tour extends Model
 
     public function users()
     {
-        return $this->belongsToMany('App\User', 'tours_users');
+        return $this->belongsToMany('App\User', 'tours_users')->withPivot('status');
     }
 }
