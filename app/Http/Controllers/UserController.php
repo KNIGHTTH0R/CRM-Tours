@@ -36,7 +36,7 @@ class UserController extends Controller
             'email'    => 'required|email',
             'is_admin' => 'nullable',
             'is_agent' => 'nullable',
-            'password' => 'min:3'
+            'password' => 'min:5'
         ]);
 
         User::create([
